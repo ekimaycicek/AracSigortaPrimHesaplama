@@ -25,61 +25,61 @@ public class Task01 {
 
         Scanner input = new Scanner(System.in);
 
-        Map<String, Integer> tarifeDonem = new HashMap<>();
-        tarifeDonem.put("Haziran 2022", 1);
-        tarifeDonem.put("Aralık 2022", 2);
+        Map<String, Integer> tariffPeriod = new HashMap<>();
+        tariffPeriod.put("June 2022", 1);
+        tariffPeriod.put("December 2022", 2);
 
-        Map<String, Integer> aracPrimleri = new HashMap<>();
-        aracPrimleri.put("otomobil", 2000);
-        aracPrimleri.put("kamyon", 3000);
-        aracPrimleri.put("otobüstip1", 4000);
-        aracPrimleri.put("otobüstip2", 5000);
-        aracPrimleri.put("motosiklet", 1500);
+        Map<String, Integer> carPremiums = new HashMap<>();
+        carPremiums.put("car", 2000);
+        carPremiums.put("truck", 3000);
+        carPremiums.put("bus 18-30", 4000);
+        carPremiums.put("bus 31+", 5000);
+        carPremiums.put("motorcycle", 1500);
 
-        System.out.println("Arac Sigorta Prim Hesaplama");
-        System.out.println("Arac Türleri: otomobil, kamyon, otobüs (tip1, tip2), motosiklet");
-        System.out.println("Tarife Dönemleri: Haziran 2022, Aralık 2022");
+        System.out.println("Vehicle Insurance Premium Calculation");
+        System.out.println("Vehicle Types: automobile, truck, bus (18-30 seats, 31 and up seats), motorcycle");
+        System.out.println("Tariff Periods: June 2022, December 2022");
 
 
 
-        boolean secim = false;
-        String secilenArac = "";
-        String secilenDonem = "";
+        boolean vote = false;
+        String selectedVehicle = "";
+        String selectedPeriod = "";
 
-        while (!secim) {
+        while (!vote) {
             System.out.print("Arac Türünü giriniz: ");
-            secilenArac = input.nextLine();
+            selectedVehicle = input.nextLine();
 
-            if (aracPrimleri.containsKey(secilenArac)) {
-                secim = true;
+            if (carPremiums.containsKey(selectedVehicle)) {
+                vote = true;
             } else {
-                System.out.println("Gecersiz arac türü. Lütfen tekrar deneyin.");
+                System.out.println("Invalid vehicle type. Please try again.");
             }
         }
 
 
 
-        secim = false;
+        vote = false;
 
-        while (!secim) {
-            System.out.print("Tarife Dönemi giriniz: ");
-            secilenDonem = input.nextLine();
+        while (!vote) {
+            System.out.print("Enter Tariff Period: ");
+            selectedPeriod = input.nextLine();
 
-            if (tarifeDonem.containsKey(secilenDonem)) {
-                secim = true;
+            if (tariffPeriod.containsKey(selectedPeriod)) {
+                vote = true;
             } else {
-                System.out.println("Gecersiz tarife dönemi. Lütfen tekrar deneyiniz.");
+                System.out.println("Invalid tariff period. Please try again.");
             }
         }
 
-        int prim = aracPrimleri.get(secilenArac);
-        int donem = tarifeDonem.get(secilenDonem);
+        int premium = carPremiums.get(selectedVehicle);
+        int period = tariffPeriod.get(selectedPeriod);
 
-        if (donem==2) {
-            prim+= 500;
+        if (period==2) {
+            premium+= 500;
         }
 
-        System.out.println("Arac Sigorta Priminiz: " + prim);
+        System.out.println("Your Car Insurance Premium: " + premium);
 
 
 
